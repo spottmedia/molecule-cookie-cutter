@@ -1,3 +1,5 @@
+[![Build Status](https://build.spottmedia.com/buildStatus/icon?job=molecule_cookie_cutter_test)](https://build.spottmedia.com/buildStatus/icon?job=molecule_cookie_cutter_test)
+
 # Molecule Cookie Cutter
 
 To get you easily kick-started with some of the most rudimentary infra setups.
