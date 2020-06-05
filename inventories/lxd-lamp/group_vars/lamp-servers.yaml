@@ -1,0 +1,15 @@
+---
+
+php_version: "7.3"
+apache_https_port: 443
+apache_http_port: 80
+apache_with_http2: true
+
+apache_vhosts:
+  - template: app.conf.j2
+    server_name: example.com
+    document_root: /mnt/shared/
+    server_aliases: []
+    ssl_certificate_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
+    ssl_certificate_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
+    ssl_ca_certificate_file: ""

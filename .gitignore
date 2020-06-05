@@ -1,0 +1,3 @@
+.idea
+inventories_override/*.yml
+!inventories_override/*.template.yml

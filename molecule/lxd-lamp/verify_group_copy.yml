@@ -1,0 +1,12 @@
+---
+
+- name: debug
+  debug:
+    msg: "{{ result.files }}"
+    verbosity: 3
+
+- name: Group copy file
+  copy:
+    src: "{{ item.path }}"
+    dest: "{{ goss_test_directory }}/{{ item.path | basename }}"
+  with_items: "{{ result.files }}"

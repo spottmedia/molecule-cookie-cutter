@@ -1,0 +1,24 @@
+---
+
+# php version recommended to leave as is,
+# it should handle 7.1, 7.2 as well (not yet being CI covered)
+php_version: "7.3"
+
+apache_https_port: 443  # adjust
+apache_http_port: 80  # adjust
+
+apache_vhosts:
+  - template: app.conf.j2  # DO NOT CHANGE
+    server_name: some-powerfull-app.com  # adjust
+    document_root: /mnt/shared/some-powerfull-app-folder  # adjust
+    server_aliases: []
+    ssl_certificate_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
+    ssl_certificate_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
+    ssl_ca_certificate_file: ""
+    # add more array items if needed, each will materialize a separate vhost config
+
+mysql_users:
+  - name: some_user  # adjust
+    pass: some_password  # adjust
+    database: some_database  # adjust
+    # add more array items if needed, each will create extra users

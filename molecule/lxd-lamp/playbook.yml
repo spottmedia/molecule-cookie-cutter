@@ -1,0 +1,23 @@
+---
+
+- name: Converge for all
+  hosts: all
+
+  roles:
+    - shareable-ansible-toolkit/common-dev
+
+  tags:
+    - all-servers
+
+
+- name: Converge for lamp
+  hosts: lamp-servers
+
+  roles:
+    - shareable-ansible-toolkit/apache_base
+    - shareable-ansible-toolkit/apachewebtier
+    - shareable-ansible-toolkit/apache-vhosts-role
+    - shareable-ansible-toolkit/dev-mysql
+
+  tags:
+    - lamp-servers

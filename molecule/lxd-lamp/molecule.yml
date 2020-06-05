@@ -1,0 +1,64 @@
+---
+dependency:
+  name: galaxy
+  options:
+    force: true
+    ignore-certs: true
+    ignore-errors: true
+    role-file: inventories/lxd-lamp/requirements.yml
+driver:
+  name: lxd
+lint:
+  name: yamllint
+platforms:
+
+  - name: toffee-lamp
+    image: "ubuntu/bionic/amd64"
+    nested: false
+    privileged: false
+    groups:
+      - all
+      - lamp-servers
+    extra_devices:
+      shared_files:
+        path: "/mnt/shared"
+        source: ${SHARED_FOLDER}
+        type: "disk"
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH:
+      $ephemeral_directory/roles/:../../roles/
+
+  inventory:
+    links:
+      group_vars: ../../inventories/lxd-lamp/group_vars/
+      host_vars: ../../inventories_override/
+
+  config_options:
+    defaults:
+      internal_poll_interval: 0.001
+      forks: 50
+      display_ok_hosts: false
+      display_skipped_hosts: false
+      stdout_callback: yaml
+      bin_ansible_callbacks: true
+    ssh_connection:
+      pipelining: true
+
+  lint:
+    name: ansible-lint
+scenario:
+  name: "lxd-lamp"
+  destroy_sequence:
+    - cleanup
+    - destroy
+  check_sequence:
+    - dependency
+    - check
+verifier:
+  name: goss
+  directory: ../../tests/lxd-lamp/
+  lint:
+    name: yamllint

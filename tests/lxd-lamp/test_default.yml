@@ -1,0 +1,31 @@
+---
+command:
+  php_version:
+    exit-status: 0
+    exec: php --version
+    stdout:
+      - "PHP 7.3"
+    skip: false
+port:
+  tcp:443:
+    listening: true
+  tcp:80:
+    listening: true
+  tcp:3306:
+    listening: true
+service:
+  apache2:
+    enabled: true
+    running: true
+  php7.3-fpm:
+    enabled: true
+    running: true
+  mysql:
+    enabled: true
+    running: true
+file:
+  /mnt/shared:
+    # required attributes
+    exists: true
+    # optional attributes
+    filetype: directory  # file, symlink, directory
