@@ -61,7 +61,7 @@ Remember to bootstrap into virtualenv with libraries in it. All can be solved wi
 
 to bring up the lxd-lamp scenario:
 
-    SHARED_FOLDER=absolute_path molecule converge -s lxd-lamp
+    EVN_VARIABLE_1=[some value] ENV_VARIABLE_2=[some other value] molecule converge -s lxd-lamp
 
 ### Integration test
 no need to provide env variables for verification as the machine is already provisioned
@@ -82,7 +82,7 @@ to suit your needs.
 * mysql   # root password randomly generated and put into ~/.my.cnf file
 * php7.3 + fpm
 * ufw with some allow rules for the aforementioned services added (dev or not let's keep it all nice and tight)
- 
+
 #### Configurable ENV variables:
 
     SHARED_FOLDER : (required) an_abolute_path_to_be_shared
@@ -93,4 +93,17 @@ to suit your needs.
     cp inventories_override/toffee-lamp.template.yml inventories_override/toffee-lamp.yml
     nano inventories_override/toffee-lamp.yml
 
-then consult the content of the file and make adjustments
+then consult the content of the `inventories_override/toffee-lamp.yml` and make adjustments
+
+#### Other notable parameters
+
+Target for `SHARED_FOLDER` from HOST is `/mnt/shared/` on LXD (specified in molecule/lxd-lamp/molecule.yml:24),
+so that binding is pretty sewn into the process of container creation, however you can always create 
+symlinks to have that folder be additionally seen at other other location. ie.
+    
+    lxc exec toffee-lamp -- ln -s /mnt/shared/ /var/www/My_Shared_Folder
+
+See `inventories/lxd-lamp/group_vars/lamp-servers.yaml` for a list of default values
+(and these could be overridden as mentioned in the **Configurable HOST variables** section above)
+
+
