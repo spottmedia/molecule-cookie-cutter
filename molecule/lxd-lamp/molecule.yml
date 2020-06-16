@@ -20,7 +20,7 @@ platforms:
       - all
       - lamp-servers
     extra_devices:
-      shared_files:
+      SHARED_FOLDER:
         path: "/mnt/shared"
         source: ${SHARED_FOLDER}
         type: "disk"
@@ -38,6 +38,7 @@ provisioner:
 
   config_options:
     defaults:
+      sudo_flags: -A
       internal_poll_interval: 0.001
       forks: 50
       display_ok_hosts: false

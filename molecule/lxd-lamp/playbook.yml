@@ -1,5 +1,17 @@
 ---
 
+- name: Converge for localhost
+  become: true
+  hosts: all
+  connection: local
+
+  roles:
+    - role: shareable-ansible-toolkit/nginx-lxd-forward-proxy
+      forward_domains: "french.kwiziq.vubuntu.spottmedia.co.uk spanish.kwiziq.vubuntu.spottmedia.co.uk kwiziq.vubuntu.spottmedia.co.uk api.kwiziq.vubuntu.spottmedia.co.uk"   # space separated list of domains (NGINX format)
+
+  tags:
+    - host-server
+
 - name: Converge for all
   hosts: all
 
