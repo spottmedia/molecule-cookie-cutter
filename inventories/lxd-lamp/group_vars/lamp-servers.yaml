@@ -13,3 +13,9 @@ apache_vhosts:
     ssl_certificate_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
     ssl_certificate_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
     ssl_ca_certificate_file: ""
+
+
+# Optional components' default values
+
+nvm_node_version: "10.16.3"
+nvm_install_globally: ['gulp']

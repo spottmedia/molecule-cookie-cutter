@@ -95,6 +95,19 @@ to suit your needs.
 
 then consult the content of the `inventories_override/toffee-lamp.yml` and make adjustments
 
+#### Optional components
+
+##### NODE/NPM 
+
+can be included by executing molecule with `--tags=all,with-np` flags, ie.
+
+
+    SHARED_FOLDER=[a folder] molecule converge -s lxd-lamp -- --tags=all,with-npm
+    
+or, if toffee is provisioned already, do incremental installation:
+
+    SHARED_FOLDER=[a folder] molecule converge -s lxd-lamp -- --tags=with-npm
+
 #### Other notable parameters
 
 Target for `SHARED_FOLDER` from HOST is `/mnt/shared/` on LXD (specified in molecule/lxd-lamp/molecule.yml:24),

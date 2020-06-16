@@ -22,3 +22,9 @@ mysql_users:
     pass: some_password  # adjust
     database: some_database  # adjust
     # add more array items if needed, each will create extra users
+
+
+# Optional components' default values
+
+nvm_node_version: some_version  # adjust
+nvm_install_globally: []  # adjust

@@ -3,3 +3,5 @@
 - src: https://github.com/spottmedia/shareable-ansible-toolkit.git
   scm: git
   version: origin/master
+
+- grzegorznowak.nvm_node

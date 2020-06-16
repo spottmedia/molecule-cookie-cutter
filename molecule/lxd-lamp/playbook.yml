@@ -21,3 +21,15 @@
 
   tags:
     - lamp-servers
+
+
+## Optional components
+- name: Converge Node/NPM component
+  hosts: lamp-servers
+
+  roles:
+    - grzegorznowak.nvm_node
+
+  tags:
+    - never
+    - with-npm
