@@ -1,9 +1,8 @@
 ---
 
-- name: Converge for localhost
-  become: true
-  hosts: all
-  connection: local
+- name: Converge for host-server
+  hosts: lamp-servers
+
 
   roles:
     - role: shareable-ansible-toolkit/nginx-lxd-forward-proxy
@@ -11,6 +10,7 @@
 
   tags:
     - host-server
+    - never
 
 - name: Converge for all
   hosts: all
