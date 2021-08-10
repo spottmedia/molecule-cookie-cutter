@@ -4,6 +4,20 @@
   hosts: lamp-servers
 
 
+  pre_tasks:
+    - shell: "echo result-{{item}}"
+      register: "r"
+      with_items: "{{ apache_vhosts }}"
+
+    - debug: var=r
+
+    - debug: msg="item.item={{item.item}}, item.stdout={{item.stdout}}, item.changed={{item.changed}}"
+      with_items: "{{r.results}}"
+
+    - debug: msg="Gets printed only if this item changed - {{item}}"
+      when: item.changed == true
+      with_items: "{{r.results}}"
+
   roles:
     - role: shareable-ansible-toolkit/nginx-lxd-forward-proxy
       forward_domains: "french.kwiziq.vubuntu.spottmedia.co.uk spanish.kwiziq.vubuntu.spottmedia.co.uk kwiziq.vubuntu.spottmedia.co.uk api.kwiziq.vubuntu.spottmedia.co.uk"   # space separated list of domains (NGINX format)
