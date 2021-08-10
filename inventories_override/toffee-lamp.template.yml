@@ -17,6 +17,8 @@ apache_vhosts:
     ssl_ca_certificate_file: ""
     # add more array items if needed, each will materialize a separate vhost config
 
+mysql_root_password: toor
+
 mysql_users:
   - name: some_user  # adjust
     pass: some_password  # adjust

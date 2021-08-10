@@ -5,6 +5,13 @@ apache_https_port: 443
 apache_http_port: 80
 apache_with_http2: true
 
+# only expose webserver, not mysql. Adjust to taste
+ufw_allow:
+  - port: 443
+    from: any
+  - port: 80
+    from: any
+
 apache_vhosts:
   - template: app.conf.j2
     server_name: example.com

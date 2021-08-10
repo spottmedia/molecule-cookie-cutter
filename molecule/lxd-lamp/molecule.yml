@@ -21,9 +21,9 @@ platforms:
       - lamp-servers
     extra_devices:
       shared_files:
-        path: "/mnt/shared"
+        path: /mnt/shared
         source: ${SHARED_FOLDER}
-        type: "disk"
+        type: disk
 
 provisioner:
   name: ansible
