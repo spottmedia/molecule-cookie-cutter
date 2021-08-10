@@ -26,3 +26,6 @@ apache_vhosts:
 
 nvm_node_version: "10.16.3"
 nvm_install_globally: ['gulp']
+
+# no extra users by default, adjust to taste
+mysql_users: []

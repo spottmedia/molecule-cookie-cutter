@@ -18,6 +18,7 @@
     - shareable-ansible-toolkit/apachewebtier
     - shareable-ansible-toolkit/apache-vhosts-role
     - shareable-ansible-toolkit/dev-mysql
+    - shareable-ansible-toolkit/mysql_extra_users
 
   tags:
     - lamp-servers

@@ -22,7 +22,7 @@ mysql_root_password: toor
 mysql_users:
   - name: some_user  # adjust
     pass: some_password  # adjust
-    database: some_database  # adjust
+    db: some_database  # adjust
     # add more array items if needed, each will create extra users
 
 
